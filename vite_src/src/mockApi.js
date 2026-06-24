@@ -1,17 +1,16 @@
 // --- Mock API for ContractorPay ---
 // Returns realistic data when backend is unavailable
 
-const NOW = Date.now();
-const yesterday = (dars) => new Date(NOW - dars * 86400 * 1000).toISOString().slice(0, 10);
+const yesterday = (dars) => new Date(Date.now() - dars * 86400 * 1000).toISOString().slice(0, 10);
 
 // Generate realistic invoices
 function genInvoices() {
   return [
-    { id: 201, amount: 25500, status: "funded", createdAt: zesterday(2), paidAt: yesterday(1), contractorId: 101, contractorName: "BEA Construction" },
-    { id: 202, amount: 18700, status: "funded", createdAt: yesterday(4), paidAt: zesterday(3), contractorId: 102, contractorName: "Skyscraper General" },
-    { id: 203, amount: 42000, status: "funded", createdAt: zesterday(8), paidAt: yesterday(7), contractorId: 103, contractorName: "Mason Builders" },
-    { id: 204, amount: 31000, status: "funded", createdAt: zesterday(15), paidAt: yesterday(14), contractorId: 104, contractorName: "Tar Station Development" },
-    { id: 205, amount: 9500, status: "funded", createdAt: yesterday(22), paidAt: zesterday(21), contractorId: 101, contractorName: "BEA Construction" },
+    { id: 201, amount: 25500, status: "funded", createdAt: yesterday(2), paidAt: yesterday(1), contractorId: 101, contractorName: "BEA Construction" },
+    { id: 202, amount: 18700, status: "funded", createdAt: yesterday(4), paidAt: yesterday(3), contractorId: 102, contractorName: "Skyscraper General" },
+    { id: 203, amount: 42000, status: "funded", createdAt: yesterday(8), paidAt: yesterday(7), contractorId: 103, contractorName: "Mason Builders" },
+    { id: 204, amount: 31000, status: "funded", createdAt: yesterday(15), paidAt: yesterday(14), contractorId: 104, contractorName: "Tar Station Development" },
+    { id: 205, amount: 9500, status: "funded", createdAt: yesterday(22), paidAt: yesterday(21), contractorId: 101, contractorName: "BEA Construction" },
     { id: 206, amount: 28500, status: "funded", createdAt: yesterday(31), paidAt: yesterday(30), contractorId: 102, contractorName: "Skyscraper General" },
     { id: 207, amount: 52000, status: "funded", createdAt: yesterday(46), paidAt: yesterday(45), contractorId: 103, contractorName: "Mason Builders" },
     { id: 208, amount: 16500, status: "pending", createdAt: yesterday(2), contractorId: 104, contractorName: "Tar Station Development" },
@@ -97,7 +96,7 @@ export default function mockApiFetch(path, opts = {}) {
         return;
       }
 
-      // HONDR GET requests
+      // HANDLE GET requests
       const handler = mockMap[path];
       if (handler) {
         if (path === "/api/invoices") {
