@@ -1,16 +1,45 @@
 {
-  "version": 1,
-  "app_type": "",
-  "app_name": "",
-  "api_contract": [],
-  "frontend_endpoints": [],
+  "version": 2,
+  "app_type": "react_spa",
+  "app_name": "ContractorPay",
+  "api_contract": [
+    "GET /api/metrics → returns dashboard KPIs",
+    "GET /api/invoices → returns invoice list {items: [...]}",
+    "POST /api/invoices → creates invoice (body: {contractorId, amount})",
+    "POST /api/invoices/:id/factor → factors an invoice",
+    "GET /api/contractors → returns contractor list",
+    "GET /api/lien-rights → returns lien rights list"
+  ],
+  "frontend_endpoints": [
+    "/ (Landing page with Hero, Features, Pricing, Testimonials, Signup/Login)",
+    "/dashboard (KPI cards, Invoice/Funded chart, Recent invoices table)",
+    "/invoices (Create invoice form + full invoice list with sorting)",
+    "/contractors (GC directory)",
+    "/lien (Lien Rights tracking)",
+    "/settings (Account info, logout)"
+  ],
   "backend_endpoints": [],
-  "components": [],
-  "known_issues": [],
-  "roadmap": [],
-  "next_action": "",
-  "focus_cycle": 1,
-  "history": [],
+  "components": [
+    "LandingPage — Hero, Features, Pricing, Testimonials, Signup/Login form, Footer",
+    "ProductApp — Dashboard, Invoices, Contractors, Lien Rights, Settings pages"
+  ],
+  "known_issues": [
+    "No real backend connected — all data is from mockApi.js fallback",
+    "Mobile sidebar menu not implemented (hamburger button has no handler)",
+    "Chart uses static months array, not dynamic date ranges"
+  ],
+  "roadmap": [
+    "Connect to real backend API",
+    "Add mobile sidebar open/close",
+    "Add user profile editing in Settings",
+    "Add payment history / transaction log",
+    "Implement notification system"
+  ],
+  "next_action": "Connect real backend endpoints or enhance mock API with more realistic data flows",
+  "focus_cycle": 2,
+  "history": [
+    "Initial scaffold: landing page + ProductApp dashboard with mock API fallback"
+  ],
   "updated_at": "2026-06-24T09:25:22.598551+00:00",
   "stage": "build"
 }
